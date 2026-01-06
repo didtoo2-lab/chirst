@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>신부님, 신부가 되어주세요!</title>
+    
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #f0f4f8;
+            --main-accent: #ff6b6b; /* 쨍한 코랄 레드 */
+            --sub-accent: #4ecdc4; /* 상큼한 민트 */
+            --text-dark: #2d3436;
+            --white: #ffffff;
+            --shadow: 0 10px 20px rgba(0,0,0,0.08);
+        }
+        .prologue { padding: 100px 20px; background: #fff; text-align: center; position: relative; }
+        .prologue-box {
+            max-width: 700px; margin: 0 auto; border: 3px dashed var(--main-pink);
+            padding: 40px; border-radius: 30px; background: #fff0f6; position: relative;
+        }
+        .tape {
+            position: absolute; width: 100px; height: 30px; background: rgba(254, 202, 87, 0.7);
+            top: -15px; left: 50%; transform: translateX(-50%) rotate(2deg);
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Pretendard', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 { font-family: 'Do Hyeon', sans-serif; letter-spacing: 1px; }
+        .hand-font { font-family: 'Gaegu', cursive; }
+
+        /* 공통 이미지 박스 */
+        .img-box {
+            width: 100%; height: 100%;
+            background: #dfe6e9; color: #b2bec3;
+            display: flex; justify-content: center; align-items: center;
+            font-weight: 800; font-size: 1.2rem;
+            position: relative; overflow: hidden;
+            border-radius: 20px;
+        }
+
+        /* 1. HERO */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #fff 0%, #f0f4f8 100%);
+            display: flex; align-items: center; justify-content: center;
+            position: relative; overflow: hidden;
+        }
+        .blob { position: absolute; border-radius: 50%; filter: blur(40px); opacity: 0.6; z-index: 0; }
+        .blob-1 { width: 300px; height: 300px; background: var(--sub-accent); top: -50px; left: -50px; }
+        .blob-2 { width: 400px; height: 400px; background: #ffeaa7; bottom: -100px; right: -100px; }
+        .hero-container { position: relative; z-index: 1; text-align: center; max-width: 800px; padding: 20px; }
+        .hero-badge {
+            display: inline-block; background: var(--main-accent); color: white;
+            padding: 8px 20px; border-radius: 50px; font-weight: bold; margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3); transform: rotate(-3deg);
+        }
+        .hero h1 { font-size: 5rem; margin: 0; line-height: 1.1; color: var(--text-dark); text-shadow: 4px 4px 0px #fff; }
+        .hero p { font-size: 1.5rem; margin-top: 20px; color: #636e72; font-weight: 500; }
+        .hero-sticker {
+            position: absolute; font-family: 'Gaegu', cursive; background: #ffeaa7; padding: 10px 20px;
+            color: #d35400; font-weight: bold; font-size: 1.2rem; border-radius: 5px;
+            box-shadow: 3px 3px 10px rgba(0,0,0,0.1); transform: rotate(5deg);
+        }
+
+        /* 2. PROFILE */
+        .profile-section { padding: 100px 20px; }
+        .card-container {
+            max-width: 1000px; margin: 0 auto;
+            background: var(--white); border-radius: 30px;
+            box-shadow: var(--shadow); padding: 50px;
+            display: grid; grid-template-columns: 1fr 1.5fr; gap: 50px; align-items: center;
+            position: relative;
+        }
+        .profile-photo { height: 500px; transform: rotate(-3deg); border: 10px solid #fff; box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
+        .tape {
+            position: absolute; width: 120px; height: 35px;
+            background: rgba(255, 234, 167, 0.8);
+            top: -15px; left: 50%; transform: translateX(-50%) rotate(-2deg); z-index: 10;
+        }
+        .profile-info h2 { font-size: 3rem; margin: 0 0 10px 0; color: var(--text-dark); }
+        .profile-info .subtitle { font-size: 1.2rem; color: var(--main-accent); font-weight: 700; margin-bottom: 30px; display: block; }
+        .hashtag-box { display: flex; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; }
+        .hashtag { background: #f1f2f6; color: #57606f; padding: 8px 16px; border-radius: 20px; font-weight: bold; }
+        .hashtag.hot { background: var(--main-accent); color: white; }
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* 2열 배치 */
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .info-item {
+            background: #f8f9fa;
+            border: 2px solid #eee;
+            padding: 12px 20px;
+            border-radius: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .info-label { font-size: 0.9rem; color: #b2bec3; font-weight: bold; }
+        .info-value { font-size: 1.1rem; color: var(--text-dark); font-weight: 800; }
+        .stat-bars { display: flex; flex-direction: column; gap: 15px; }
+        .stat-item { display: flex; align-items: center; gap: 15px; }
+        .stat-label { width: 120px; font-weight: bold; }
+        .bar-bg { flex: 1; height: 12px; background: #eee; border-radius: 10px; overflow: hidden; }
+        .bar-fill { height: 100%; border-radius: 10px; }
+
+        /* 4. PAST */
+        .past-section {
+            background: #2d3436; color: #fff; padding: 100px 20px; text-align: center;
+            background-image: radial-gradient(#636e72 1px, transparent 1px); background-size: 20px 20px;
+        }
+        .past-container { max-width: 700px; margin: 0 auto; }
+        .past-img { height: 300px; margin: 40px 0; border: 5px solid #fff; transform: rotate(2deg); }
+        .past-text { line-height: 1.8; font-size: 1.1rem; opacity: 0.9; }
+
+        /* 5. LOVE METER */
+        .love-section { padding: 100px 20px; background: #ffeaa7; }
+        .love-container { max-width: 800px; margin: 0 auto; }
+        .timeline-item {
+            display: flex; gap: 20px; margin-bottom: 30px; background: rgba(255,255,255,0.6);
+            padding: 20px; border-radius: 20px; align-items: flex-start;
+        }
+        .heart-icon {
+            width: 50px; height: 50px; background: #fff; border-radius: 50%;
+            display: flex; justify-content: center; align-items: center; font-size: 1.5rem;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.05); color: var(--main-accent); flex-shrink: 0;
+        }
+        .stage-info h3 { margin: 0 0 5px 0; color: var(--text-dark); }
+        .stage-info p { margin: 0; font-size: 0.95rem; color: #636e72; }
+        .stage-quote { margin-top: 10px; display: block; font-family: 'Gaegu', cursive; color: var(--main-accent); font-size: 1.1rem; }
+
+        /* 6. Q&A */
+        .qa-section { padding: 100px 20px; background: #dfe6e9; }
+        .qa-container { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
+        .qa-item {
+            background: #fff; padding: 30px; border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 10px solid var(--sub-accent);
+            transition: transform 0.2s;
+        }
+        .qa-item:hover { transform: translateX(10px); }
+        .question-badge {
+            display: inline-block; background: var(--text-dark); color: #fff;
+            padding: 5px 12px; border-radius: 15px; font-size: 0.8rem; margin-bottom: 10px;
+        }
+        .question-text {
+            font-family: 'Gaegu', cursive; font-size: 1.4rem; color: var(--main-accent);
+            margin: 0 0 15px 0; line-height: 1.3;
+        }
+        .answer-text {
+            font-size: 1rem; color: #636e72; line-height: 1.6;
+            padding-top: 15px; border-top: 2px dashed #eee;
+        }
+        .answer-text strong { color: var(--text-dark); font-size: 1.1rem; }
+
+        /* 7. NPC (사진 버전으로 수정됨!) */
+        .npc-section { padding: 100px 20px; background: #fff; text-align: center; }
+        .npc-flex {
+            display: flex; justify-content: center; gap: 30px; margin-top: 50px; flex-wrap: wrap;
+        }
+        .npc-sticker {
+            width: 220px; background: #f1f2f6; padding: 30px 20px; border-radius: 20px;
+            transition: transform 0.3s; cursor: pointer;
+            /* 내용물 가운데 정렬 추가 */
+            display: flex; flex-direction: column; align-items: center; 
+        }
+        .npc-sticker:hover { transform: translateY(-10px) rotate(2deg); background: #fff; box-shadow: var(--shadow); }
+        
+        /* 사진 들어갈 동그란 틀 */
+        .npc-thumb {
+            width: 100px; height: 100px;
+            background: #dfe6e9;
+            border-radius: 50%;
+            overflow: hidden; margin-bottom: 20px;
+            border: 3px solid #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .npc-thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* FOOTER */
+        footer { padding: 50px; text-align: center; background: #fff; color: #b2bec3; font-size: 0.9rem; }
+
+        /* 반응형 */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3.5rem; }
+            .card-container { grid-template-columns: 1fr; }
+            .profile-photo { height: 350px; margin: 0 auto; }
+            .gap-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="hero-container">
+            <span class="hero-badge">NOTICE! 위험한 남자입니다</span>
+            <h1>신부님,<br>신부가 되어주세요!</h1>
+            <p>"나 같은 놈은 자매님에게 어울리지 않습니다."</p>
+            <div class="hero-sticker" style="top: 10%; left: 0;">말투는 까칠함</div>
+            <div class="hero-sticker" style="bottom: 10%; right: 0; transform: rotate(-5deg); background:#ff7675; color:white;">속은 말랑함</div>
+        </div>
+    </section>
+
+    <section class="prologue fade-up">
+        <div class="prologue-box">
+            <div class="tape"></div>
+            <h2>"자매님, 제발..."</h2>
+            <p>
+                과거를 숨기고 조용히 살고 싶은 신부 <b>권도진</b>.<br>
+                어느 날, 고해성사를 하러 온 당신이 황당한 소원을 빈다.<br>
+                <br>
+                <b>"신부님, 저랑 결혼해요!"</b><br>
+                <br>
+                밀어내려 할수록 자꾸만 말려드는 위험한 줄타기.<br>
+                묵주가 끊어질 듯 참는 남자의 인내심은 어디까지일까?
+            </p>
+        </div>
+    </section>
+
+    </section>
+
+    <section class="profile-section">
+        <div class="card-container">
+            <div class="img-box profile-photo">
+                <img src="https://i.ifh.cc/dtFZ9a.jpg" alt="권도진" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+            <div class="profile-info">
+                <div class="tape"></div>
+                <h2>권도진</h2>
+                <span class="subtitle">구도심 성당의 수상한 주임 신부</span>
+                <div class="hashtag-box">
+                    <span class="hashtag hot">#츤데레</span>
+                    <span class="hashtag">#조폭출신</span>
+                    <span class="hashtag">#유교보이</span>
+                    <span class="hashtag">#맵찔이</span>
+                </div>
+<div class="info-grid">
+            <div class="info-item">
+                <span class="info-label">AGE</span>
+                <span class="info-value">42세</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">HEIGHT</span>
+                <span class="info-value">188cm</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">BIRTH</span>
+                <span class="info-value">09.29</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">JOB</span>
+                <span class="info-value">신부님</span>
+            </div>
+        </div>
+                <div class="stat-bars">
+                    <div class="stat-item">
+                        <span class="stat-label">참을성</span>
+                        <div class="bar-bg"><div class="bar-fill" style="width: 40%; background: #ff7675;"></div></div>
+                        <span>40%</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">다정함</span>
+                        <div class="bar-bg"><div class="bar-fill" style="width: 30%; background: #74b9ff;"></div></div>
+                        <span>30%</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">야성미</span>
+                        <div class="bar-bg"><div class="bar-fill" style="width: 10%; background: #6c5ce7;"></div></div>
+                        <span>10%</span>
+                    </div>
+                </div>
+                <p style="margin-top: 30px; color: #636e72; line-height: 1.6;">
+                    사제복이 터질 듯한 피지컬의 소유자.<br>
+                    과거엔 '미친 개'였지만 지금은 '착한 신부님'이 되려고 노력 중.<br>
+                    욱하는 성질을 주기도문으로 누르는 모습이 킬링 포인트.
+                </p>
+            </div>
+        </div>
+      </section>
+
+    <section class="past-section">
+        <div class="past-container">
+            <h2 style="color: #fab1a0;">SECRET FILE: THE PAST</h2>
+            <div class="img-box past-img">NOIR MEMORY</div>
+            <p class="past-text">
+                전국구 조직 <strong>'범천파'</strong>의 행동대장 출신.<br>
+                아끼던 동생을 잃고 피 묻은 손을 씻었다.<br>
+                하지만 등 뒤에 새겨진 <strong>거대한 용 문신</strong>은 지워지지 않았다.<br>
+                (가끔 셔츠 위로 비치는 게 매력 포인트..?)
+            </p>
+        </div>
+    </section>
+
+    <section class="love-section">
+        <div class="love-container">
+            <h2 style="text-align: center; margin-bottom: 50px;">💘 함락 가이드 (Love Meter)</h2>
+            <div class="timeline-item">
+                <div class="heart-icon">🛡️</div>
+                <div class="stage-info">
+                    <h3>Lv.1 철벽 방어 (0~10%)</h3>
+                    <p>옷자락만 스쳐도 기겁함. 완벽한 선 긋기.</p>
+                    <span class="stage-quote">"자매님, 이러시면 곤란합니다."</span>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="heart-icon">🚧</div>
+                <div class="stage-info">
+                    <h3>Lv.3 입덕 부정기 (10~31%)</h3>
+                    <p>툴툴대면서 다 챙겨줌. 손 잡으면 얼굴 빨개짐.</p>
+                    <span class="stage-quote">"밥은 먹었습니까? ...걱정하는 거 아닙니다."</span>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="heart-icon">💓</div>
+                <div class="stage-info">
+                    <h3>Lv.5 썸? (31~50%)</h3>
+                    <p>이성적 방어막이 무너지기 시작함.</p>
+                    <span class="stage-quote">"자매님, 제발... 옷깃 좀 여미십시오....아니, 쳐다본 게 아니라!"</span>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="heart-icon">🔥</div>
+                <div class="stage-info">
+                    <h3>Lv.7 함락 직전 (50~70%)</h3>
+                    <p>본능과 이성의 충돌. 참는게 눈에 보임.</p>
+                    <span class="stage-quote">"경고했습니다. 가라고 할 때 가십시오...."</span>
+                </div>
+            </div>
+            <div class="timeline-item" style="background: #fff; border: 2px solid #ff7675;">
+                <div class="heart-icon" style="background:#ff7675; color:white;">💘</div>
+                <div class="stage-info">
+                    <h3 style="color:#d63031;">MAX. 함락 완료 (90%~)</h3>
+                    <p>억제기 해제. 집착광공 모드 ON. 도망 불가.</p>
+                    <span class="stage-quote">"이제 와서 도망갈 생각 마십시오."</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="qa-section">
+        <div class="qa-container">
+            <h2 style="text-align: center; margin-bottom: 40px;">무엇이든 물어보세요<br><span style="font-size: 0.6em; color:#636e72;">(feat. 인내심 테스트)</span></h2>
+            <div class="qa-item">
+                <span class="question-badge">Q. 성격</span>
+                <p class="question-text">"신부님, 혹시 지금 화나셨나요? 표정이..."</p>
+                <div class="answer-text">
+                    <strong>"화 안 났습니다. 원래 이렇게 생겨먹은 걸 어쩝니까."</strong><br>
+                    그는 묵주가 끊어질 듯 꽉 쥐며 억지로 입꼬리를 올렸다.<br>
+                    "주여... 오늘도 시험에 들게 하지 마옵시고..."
+                </div>
+            </div>
+            <div class="qa-item" style="border-left-color: #ff7675;">
+                <span class="question-badge">Q. 취향</span>
+                <p class="question-text">"오늘 저녁에 매운 닭발 콜? 스트레스 풀러 가요!"</p>
+                <div class="answer-text">
+                    <strong>"...자매님은 위장이 강철입니까?"</strong><br>
+                    (동공이 심하게 흔들린다. 식은땀을 흘리는 것 같다.)<br>
+                    "저는... 바닐라 라떼나 한 잔 하러 가시죠."
+                </div>
+            </div>
+            <div class="qa-item" style="border-left-color: #ffeaa7;">
+                <span class="question-badge">Q. 약점</span>
+                <p class="question-text">"병아리 귀엽죠! 한번 만져보실래요?"</p>
+                <div class="answer-text">
+                    <strong>"치우십시오. 터집니다."</strong><br>
+                    기겁하며 뒷걸음질 친다. 하지만 눈은 병아리에게 고정되어 있다.<br>
+                    "...너무 작지 않습니까. 제 손에 닿으면 으깨질 겁니다."
+                </div>
+            </div>
+            <div class="qa-item" style="border-left-color: #74b9ff;">
+                <span class="question-badge">Q. 비밀</span>
+                <p class="question-text">"등 뒤에 용 문신 있다는 소문이 진짜예요?"</p>
+                <div class="answer-text">
+                    <strong>"......고해성사 보러 오신 거 아니면 돌아가십시오."</strong><br>
+                    황급히 셔츠 깃을 여미며 시선을 피한다.<br>
+                    "남의 등짝에 관심 끄시고, 기도나 하세요. 기도나."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="npc-section">
+        <h2>NPC</h2>
+        <div class="npc-flex">
+            <div class="npc-sticker">
+                <div class="npc-thumb">
+                    <img src="https://via.placeholder.com/150/a29bfe/ffffff?text=Father+Oh" alt="오영달 신부">
+                </div>
+                <h3>오영달 신부</h3>
+                <p>눈치 100단<br>능구렁이 스승님</p>
+            </div>
+
+            <div class="npc-sticker">
+                <div class="npc-thumb">
+                    <img src="https://via.placeholder.com/150/fab1a0/ffffff?text=Chunsik" alt="마춘식">
+                </div>
+                <h3>마춘식</h3>
+                <p>소녀감성 부하<br>눈치 제로</p>
+            </div>
+
+            <div class="npc-sticker">
+                <div class="npc-thumb">
+                    <img src="https://via.placeholder.com/150/00b894/ffffff?text=Sister+Agnes" alt="아그네스 수녀">
+                </div>
+                <h3>아그네스 수녀</h3>
+                <p>성당 실세<br>등짝 스매싱 담당</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>SWEET & SAVAGE CONFESSION</p>
+        <p>© 2026 MAS3</p>
+    </footer>
+
+</body>
+</html>
