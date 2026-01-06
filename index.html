@@ -319,14 +319,23 @@
             
             scroll-behavior: smooth;
             -webkit-overflow-scrolling: touch;
-            
-            /* 스크롤바 숨김 디자인 유지 */
-            -ms-overflow-style: none;
-            scrollbar-width: none;
         }
-        .past-gallery::-webkit-scrollbar {
-            display: none;
-        }
+.past-gallery::-webkit-scrollbar {
+    height: 12px; 
+}
+
+/* 스크롤바 막대 (손잡이) */
+.past-gallery::-webkit-scrollbar-thumb {
+    background-color: #fab1a0; /* 제목 색깔(살구색)이랑 깔맞춤! 눈에 확 띔 */
+    border-radius: 10px;       /* 둥글둥글하게 */
+    border: 3px solid #2d3436; /* 배경색이랑 똑같은 테두리를 줘서 여백 있는 느낌 */
+}
+
+/* 스크롤바 뒷배경 (트랙) */
+.past-gallery::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.1); /* 아주 연한 흰색 투명도 */
+    border-radius: 10px;
+}
 /* 사진 카드 디자인 (크기 키움) */
         .past-photo {
             /* [수정1] 박스 크기를 220px -> 320px로 대폭 키움! */
@@ -623,3 +632,4 @@
 </html>
 </body>
 </html>
+
