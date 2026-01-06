@@ -197,32 +197,39 @@
         }
         .answer-text strong { color: var(--text-dark); font-size: 1.1rem; }
 
-        /* 7. NPC (사진 버전으로 수정됨!) */
-        .npc-section { padding: 100px 20px; background: #fff; text-align: center; }
-        .npc-flex {
-            display: flex; justify-content: center; gap: 30px; margin-top: 50px; flex-wrap: wrap;
-        }
-        .npc-sticker {
-            width: 220px; background: #f1f2f6; padding: 30px 20px; border-radius: 20px;
-            transition: transform 0.3s; cursor: pointer;
-            /* 내용물 가운데 정렬 추가 */
-            display: flex; flex-direction: column; align-items: center; 
-        }
-        .npc-sticker:hover { transform: translateY(-10px) rotate(2deg); background: #fff; box-shadow: var(--shadow); }
-        
-        /* 사진 들어갈 동그란 틀 */
-        .npc-thumb {
-            width: 100px; height: 100px;
-            background: #dfe6e9;
-            border-radius: 50%;
-            overflow: hidden; margin-bottom: 20px;
-            border: 3px solid #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        .npc-thumb img { width: 100%; height: 100%; object-fit: cover; }
+/* NPC 이모지 아이콘 스타일 */
+.npc-icon {
+    width: 100px; 
+    height: 100px;
+    background: #fff;       /* 배경은 하얗게 */
+    border-radius: 50%;     /* 동그라미 */
+    font-size: 4rem;        /* 이모지 왕 크게 */
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* 그림자 살짝 */
+    cursor: default;
+}
 
-        /* FOOTER */
-        footer { padding: 50px; text-align: center; background: #fff; color: #b2bec3; font-size: 0.9rem; }
+/* 스티커 호버 효과는 그대로 유지 */
+.npc-sticker {
+    width: 220px; 
+    background: #f1f2f6; 
+    padding: 30px 20px; 
+    border-radius: 20px;
+    transition: transform 0.3s; 
+    cursor: pointer;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+}
 
+.npc-sticker:hover { 
+    transform: translateY(-10px) rotate(2deg); 
+    background: #fff; 
+    box-shadow: var(--shadow); 
+}
         /* 반응형 */
  @media (max-width: 768px) {
             /* 1. 전체 여백 줄이기 */
@@ -286,7 +293,7 @@
         <div class="hero-container">
             <span class="hero-badge">NOTICE! 위험한 남자입니다</span>
             <h1>신부님,<br>신부가 되어주세요!</h1>
-            <p>"나 같은 놈은 자매님에게 어울리지 않습니다."</p>
+            <p>"나 같은 놈은 당신에게 어울리지 않습니다."</p>
             <div class="hero-sticker" style="top: 10%; left: 0;">말투는 까칠함</div>
             <div class="hero-sticker" style="bottom: 10%; right: 0; transform: rotate(-5deg); background:#ff7675; color:white;">속은 말랑함</div>
         </div>
@@ -297,14 +304,15 @@
             <div class="tape"></div>
             <h2>"자매님, 제발..."</h2>
             <p>
-                과거를 숨기고 조용히 살고 싶은 
+                과거를 숨기고 조용히 살고 싶은<br> 
                 신부 <b>권도진</b>.<br>
-                어느 날, 
-                고해성사를 하러 온 당신이 황당한 소원을 빈다.<br>
+                어느 날,<br>
+                고해성사를 하러 온 당신이<br>
+                황당한 소원을 빈다.<br>
                 <br>
-                <b>"신부님, 저랑 결혼해요!"</b><br>
+                <b>"신부님, 제 신부가 되어주세요!"</b><br>
                 <br>
-                밀어내려 할수록 자꾸만 말려드는 위험한 줄타기.<br>
+                자꾸만 말려드는 위험한 줄타기.<br>
                 이 남자의 인내심은 어디까지일까?
             </p>
         </div>
@@ -362,9 +370,9 @@
                     </div>
                 </div>
                 <p style="margin-top: 30px; color: #636e72; line-height: 1.6;">
-                    사제복이 터질 듯한 피지컬의 소유자.<br>
-                    과거엔 '미친 개'였지만 지금은 '착한 신부님'이 되려고 노력 중.<br>
-                    인데.. 요즘 시련이 닥쳤다. 
+                    과거엔 '미친 개'였지만 <br>
+                    지금은 '착한 신부님'이 되려고 노력 중.<br>
+                    인데.. 요즘 시련이 닥쳤다. <br>
                 </p>
             </div>
         </div>
@@ -381,7 +389,8 @@
         <p class="past-text">
             전국구 조직 <strong>'범천파'</strong>의 행동대장 출신.<br>
             아끼던 동생을 잃고 피 묻은 손을 씻었다.<br>
-            하지만 등 뒤에 새겨진 <strong>거대한 용 문신</strong>은 지워지지 않았다.<br>
+            하지만 등 뒤에 새겨진 <strong>거대한 용 문신</strong>은<br>
+            지워지지 않았다.<br>
         </p>
     </div>
     </section>
@@ -449,7 +458,7 @@
                 <p class="question-text">"오늘 저녁에 매운 닭발 콜? 스트레스 풀러 가요!"</p>
                 <div class="answer-text">
                     <strong>"...자매님은 위장이 강철입니까?"</strong><br>
-                    (동공이 심하게 흔들린다. 식은땀을 흘리는 것 같다.)<br>
+                    동공이 심하게 흔들린다. 식은땀을 흘리는 것 같다.<br>
                     "저는... 바닐라 라떼나 한 잔 하러 가시죠."
                 </div>
             </div>
@@ -474,32 +483,25 @@
         </div>
     </section>
 
-    <section class="npc-section">
-        <h2>NPC</h2>
-        <div class="npc-flex">
-            <div class="npc-sticker">
-                <div class="npc-thumb">
-                    <img src="https://via.placeholder.com/150/a29bfe/ffffff?text=Father+Oh" alt="오영달 신부">
-                </div>
-                <h3>오영달 신부</h3>
-                <p>눈치 100단<br>능구렁이 스승님</p>
-            </div>
+<section class="npc-section">
+    <h2>NPC</h2>
+    <div class="npc-flex">
+        <div class="npc-sticker">
+            <div class="npc-icon">👴🏻</div>
+            <h3>오영달 신부</h3>
+            <p>눈치 100단<br>능구렁이 스승님</p>
+        </div>
 
-            <div class="npc-sticker">
-                <div class="npc-thumb">
-                    <img src="https://via.placeholder.com/150/fab1a0/ffffff?text=Chunsik" alt="마춘식">
-                </div>
-                <h3>마춘식</h3>
-                <p>소녀감성 부하<br>눈치 제로</p>
-            </div>
+        <div class="npc-sticker">
+            <div class="npc-icon">🧸</div>
+            <h3>마춘식</h3>
+            <p>소녀감성 부하<br>눈치 제로</p>
+        </div>
 
-            <div class="npc-sticker">
-                <div class="npc-thumb">
-                    <img src="https://via.placeholder.com/150/00b894/ffffff?text=Sister+Agnes" alt="아그네스 수녀">
-                </div>
-                <h3>아그네스 수녀</h3>
-                <p>성당 실세<br>등짝 스매싱 담당</p>
-            </div>
+        <div class="npc-sticker">
+            <div class="npc-icon">🧹</div>
+            <h3>아그네스 수녀</h3>
+            <p>성당 실세<br>등짝 스매싱 담당</p>
         </div>
     </section>
 
@@ -510,6 +512,7 @@
 
 </body>
 </html>
+
 
 
 
