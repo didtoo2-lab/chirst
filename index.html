@@ -200,14 +200,12 @@
                 padding: 50px 20px;
             }
 
-            /* 2. 프로필 카드: 한 줄로 꽉 차게 수정 */
-            .card-container {
-                display: flex; /* 그리드 끄고 플렉스로 변경 */
-                flex-direction: column; /* 세로로 쌓기 */
-                width: 100%; /* 너비 꽉 채우기 */
-                padding: 30px 20px;
-                margin: 0;
-            }
+.card-container {
+            display: flex !important; /* [중요] PC의 Grid(격자) 무시하고 강제로 플렉스로 변경 */
+            flex-direction: column; /* 옆으로 서지 말고 위아래로 줄 서! */
+            width: 100%; /* 너비 꽉 채우기 */
+            padding: 30px 20px;
+        }
 
             .profile-photo {
                 width: 100%; 
@@ -269,13 +267,15 @@
             <div class="tape"></div>
             <h2>"자매님, 제발..."</h2>
             <p>
-                과거를 숨기고 조용히 살고 싶은 신부 <b>권도진</b>.<br>
-                어느 날, 고해성사를 하러 온 당신이 황당한 소원을 빈다.<br>
+                과거를 숨기고 조용히 살고 싶은 
+                신부 <b>권도진</b>.<br>
+                어느 날, 
+                고해성사를 하러 온 당신이 황당한 소원을 빈다.<br>
                 <br>
                 <b>"신부님, 저랑 결혼해요!"</b><br>
                 <br>
                 밀어내려 할수록 자꾸만 말려드는 위험한 줄타기.<br>
-                묵주가 끊어질 듯 참는 남자의 인내심은 어디까지일까?
+                이 남자의 인내심은 어디까지일까?
             </p>
         </div>
     </section>
@@ -285,7 +285,7 @@
     <section class="profile-section">
         <div class="card-container">
             <div class="img-box profile-photo">
-                <img src="https://i.ifh.cc/dtFZ9a.jpg" alt="권도진" style="width: 100%; height: 100%; object-fit: cover;">
+                <img src="https://raw.githubusercontent.com/didtoo2-lab/img/refs/heads/main/pro.webp" alt="권도진" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
             <div class="profile-info">
                 <div class="tape"></div>
@@ -334,7 +334,7 @@
                 <p style="margin-top: 30px; color: #636e72; line-height: 1.6;">
                     사제복이 터질 듯한 피지컬의 소유자.<br>
                     과거엔 '미친 개'였지만 지금은 '착한 신부님'이 되려고 노력 중.<br>
-                    욱하는 성질을 주기도문으로 누르는 모습이 킬링 포인트.
+                    인데.. 요즘 시련이 닥쳤다. 
                 </p>
             </div>
         </div>
@@ -343,12 +343,11 @@
     <section class="past-section">
         <div class="past-container">
             <h2 style="color: #fab1a0;">SECRET FILE: THE PAST</h2>
-            <div class="img-box past-img">NOIR MEMORY</div>
+            <div class="https://raw.githubusercontent.com/didtoo2-lab/img/refs/heads/main/jopok.webp">NOIR MEMORY</div>
             <p class="past-text">
                 전국구 조직 <strong>'범천파'</strong>의 행동대장 출신.<br>
                 아끼던 동생을 잃고 피 묻은 손을 씻었다.<br>
                 하지만 등 뒤에 새겨진 <strong>거대한 용 문신</strong>은 지워지지 않았다.<br>
-                (가끔 셔츠 위로 비치는 게 매력 포인트..?)
             </p>
         </div>
     </section>
@@ -477,6 +476,7 @@
 
 </body>
 </html>
+
 
 
 
