@@ -196,45 +196,65 @@
             padding-top: 15px; border-top: 2px dashed #eee;
         }
         .answer-text strong { color: var(--text-dark); font-size: 1.1rem; }
-.npc-flex {
-    display: flex; 
-    justify-content: center; 
-    gap: 30px; 
-    margin-top: 50px; 
-    flex-wrap: wrap;
-}
-.npc-icon {
-    width: 100px; 
-    height: 100px;
-    background: #fff;       /* 배경은 하얗게 */
-    border-radius: 50%;     /* 동그라미 */
-    font-size: 4rem;        /* 이모지 왕 크게 */
-    display: flex; 
-    justify-content: center; 
-    align-items: center;
-    margin-bottom: 20px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* 그림자 살짝 */
-    cursor: default;
-}
+/* 7. NPC 섹션 (사라졌던 거 복구!) */
+        .npc-section { 
+            padding: 100px 20px; 
+            background: #fff; 
+            text-align: center; /* 제목 가운데 정렬 */
+        }
 
-/* 스티커 호버 효과는 그대로 유지 */
-.npc-sticker {
-    width: 220px; 
-    background: #f1f2f6; 
-    padding: 30px 20px; 
-    border-radius: 20px;
-    transition: transform 0.3s; 
-    cursor: pointer;
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-}
+        /* 친구들 가로로 나란히 줄 세우기 (이게 없어서 세로로 된 거!) */
+        .npc-flex {
+            display: flex; 
+            justify-content: center; 
+            gap: 30px; 
+            margin-top: 50px; 
+            flex-wrap: wrap;
+        }
 
-.npc-sticker:hover { 
-    transform: translateY(-10px) rotate(2deg); 
-    background: #fff; 
-    box-shadow: var(--shadow); 
-}
+        /* NPC 각각의 네모 박스 디자인 */
+        .npc-sticker {
+            width: 220px; 
+            background: #f1f2f6; /* 회색 배경 박스 */
+            padding: 30px 20px; 
+            border-radius: 20px;
+            transition: transform 0.3s; 
+            cursor: pointer;
+            /* 내용물 가운데 정렬 */
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+        }
+
+        .npc-sticker:hover { 
+            transform: translateY(-10px) rotate(2deg); 
+            background: #fff; 
+            box-shadow: var(--shadow); 
+        }
+
+        /* NPC 이모지 아이콘 스타일 */
+        .npc-icon {
+            width: 100px; 
+            height: 100px;
+            background: #fff;       
+            border-radius: 50%;     
+            font-size: 4rem;        
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
+            cursor: default;
+        }
+
+        /* FOOTER (이것도 사라져서 글씨가 컸던 거야!) */
+        footer { 
+            padding: 50px; 
+            text-align: center; 
+            background: #fff; 
+            color: #b2bec3; /* 연한 회색 */
+            font-size: 0.9rem; /* 글씨 작게 */
+        }
         /* 반응형 */
  @media (max-width: 768px) {
             /* 1. 전체 여백 줄이기 */
@@ -518,6 +538,7 @@
 
 </body>
 </html>
+
 
 
 
