@@ -308,6 +308,63 @@
             .npc-flex { gap: 20px; }
             .npc-sticker { width: 100%; }
         }
+/* 가로로 슥슥 넘기는 앨범 틀 */
+        .past-gallery {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            
+            /* [중요] 위아래 50px, 양옆 20px로 여백을 늘려서 삐딱한 사진 모서리가 안 잘리게 함 */
+            padding: 50px 20px; 
+            
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            
+            /* 스크롤바 숨김 디자인 유지 */
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .past-gallery::-webkit-scrollbar {
+            display: none;
+        }
+/* 사진 카드 디자인 (크기 키움) */
+        .past-photo {
+            /* [수정1] 박스 크기를 220px -> 320px로 대폭 키움! */
+            flex: 0 0 320px;
+            min-width: 320px; 
+            height: 320px;
+            
+            border: 10px solid #fff; /* 테두리도 조금 두껍게 */
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+            border-radius: 5px;
+            overflow: hidden;
+            transform: rotate(-3deg);
+            transition: transform 0.3s;
+            background: #fff; /* 배경을 흰색으로 (사진 비율 안 맞을 때 빈 공간 색) */
+        }
+
+        /* 짝수 번째 사진 회전 */
+        .past-photo:nth-child(even) {
+            transform: rotate(3deg);
+        }
+
+        /* 마우스 올리면 */
+        .past-photo:hover {
+            transform: scale(1.05) rotate(0deg) !important;
+            z-index: 10;
+        }
+
+        /* [중요!] 이미지 설정 변경 */
+        .past-photo img {
+            width: 100%;
+            height: 100%;
+            
+            /* [핵심] cover(꽉 채우기) -> contain(다 보여주기) */
+            /* 사진이 잘리지 않고 온전하게 다 나옵니다 */
+            object-fit: contain; 
+            
+            background-color: #000; /* 사진 빈 공간은 검은색 처리 (영화처럼) */
+        }
     </style>
 </head>
 <body>
@@ -331,6 +388,7 @@
             <p>
                 과거를 숨기고 조용히 살고 싶은<br> 
                 신부 <b>권도진</b>.<br>
+               <br>
                 어느 날,<br>
                 고해성사를 하러 온 당신이<br>
                 황당한 소원을 빈다.<br>
@@ -404,20 +462,35 @@
       </section>
 
 <section class="past-section">
-    <div class="past-container">
-        <h2 style="color: #fab1a0;">SECRET FILE: THE PAST</h2>
-        
-        <div class="img-box past-img">
-            <img src="https://raw.githubusercontent.com/didtoo2-lab/img/refs/heads/main/jopok.webp" alt="과거사진">
-        </div> 
+        <div class="past-container">
+            <h2 style="color: #fab1a0;">SECRET FILE: THE PAST</h2>
+            
+            <div class="past-gallery">
+                
+                <div class="past-photo">
+                    <img src="https://raw.githubusercontent.com/didtoo2-lab/img/refs/heads/main/jopok.webp" alt="과거1">
+                </div>
 
-        <p class="past-text">
-            전국구 조직 <strong>'범천파'</strong>의 행동대장 출신.<br>
-            아끼던 동생을 잃고 피 묻은 손을 씻었다.<br>
-            하지만 등 뒤에 새겨진 <strong>거대한 용 문신</strong>은<br>
-            지워지지 않았다.<br>
-        </p>
-    </div>
+                <div class="past-photo">
+                    <img src="https://raw.githubusercontent.com/didtoo2-lab/img/refs/heads/main/타투.webp" alt="과거2">
+                </div>
+
+                <div class="past-photo">
+                    <img src="https://raw.githubusercontent.com/didtoo2-lab/img/refs/heads/main/피.webp" alt="과거3">
+                </div>
+
+                <div class="past-photo">
+                    <img src="https://raw.githubusercontent.com/didtoo2-lab/img/refs/heads/main/담배.webp" alt="과거4">
+                </div>
+
+            </div>
+            <p class="past-text">
+                전국구 조직 <strong>'범천파'</strong>의 행동대장 출신.<br>
+                아끼던 동생을 잃고 피 묻은 손을 씻었다.<br>
+                하지만 등 뒤에 새겨진 <strong>거대한 용 문신</strong>은<br>
+                지워지지 않았다.
+            </p>
+        </div>
     </section>
 
     <section class="love-section">
@@ -535,20 +608,18 @@
         <p>SWEET & SAVAGE CONFESSION</p>
         <p>© 2026 MAS3</p>
     </footer>
+<script>
+        const scrollContainer = document.querySelector(".past-gallery");
 
+        scrollContainer.addEventListener("wheel", (evt) => {
+            // 마우스 휠을 돌릴 때만 작동
+            if(evt.deltaY !== 0) {
+                evt.preventDefault(); // 위아래 스크롤 막고
+                scrollContainer.scrollLeft += evt.deltaY; // 옆으로 밀어버림
+            }
+        });
+    </script>
+    </body>
+</html>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
